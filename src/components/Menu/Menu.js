@@ -1,5 +1,5 @@
 import { UsuarioContext } from '../UsuarioContext';
-import { HabitosConcluidosContext } from '../HabitosTerminadosContext';
+import { HabitosContext } from '../HabitosContext';
 import { useContext } from 'react';
 import {MenuContainer, Botao, AtualBotao} from "./styles";
 import { Link } from "react-router-dom";
@@ -7,8 +7,12 @@ import { CircularProgressbar, buildStyles} from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 
 function Menu(){
+
     const {usuario} = useContext(UsuarioContext);
-    const {habitosConcluidos} = useContext(HabitosConcluidosContext);
+    const {habitos} = useContext(HabitosContext);
+
+    console.log(habitos);
+
     return(
         <MenuContainer id={usuario.id}>
             <Link to="/habitos"><Botao>Hábitos</Botao></Link>
@@ -16,7 +20,7 @@ function Menu(){
                 <AtualBotao>
                     <div>
                         <CircularProgressbar
-                            value={habitosConcluidos}
+                            value={10}
                             text="Hoje"
                             styles={buildStyles({
                                 textSize: '22px',

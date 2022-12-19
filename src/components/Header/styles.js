@@ -7,6 +7,7 @@ const HeaderContainer = styled.div`
   top: 0px;
   position: fixed;
   background-color: #126BA5;
+  z-index: 100;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
   display: ${props => props.id === "" ? "none" : "flex"};
   padding: 10px 18px;

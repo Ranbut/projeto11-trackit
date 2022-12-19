@@ -2,11 +2,11 @@ import logo from "../../assets/logo.png";
 import {Container, Formulario} from "./styles";
 import { useState } from "react";
 import axios from 'axios';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ThreeDots } from  'react-loader-spinner';
-import { useNavigate } from "react-router-dom";
 
 function Cadastro(){
+
     const [clicado, setClicado] = useState(false);
     const [cadastro, setCadastro] = useState({email: "", name: "", image: "", password: ""});
     const navigate = useNavigate();
@@ -18,6 +18,7 @@ function Cadastro(){
         requisicao.then(() => navigate("/")) ;
         requisicao.catch((res) => {alert(res.response.data.message); setClicado(false);}) ;
     }
+
     return(
         <Container>
             <img src={logo} alt="Logo"/>
@@ -43,6 +44,7 @@ function Cadastro(){
             <Link to="/"><p>Já tem uma conta? Faça login!</p></Link>
         </Container>
     );
+
 }
 
 export default Cadastro;

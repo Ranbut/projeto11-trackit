@@ -17,7 +17,7 @@ function Login(){
 
     useEffect(() => { 
         setUsuario({email: "", id: "", image: "", name: "", password: "", token:""});
-    }, []);
+    }, [setUsuario]);
 
     function entrar(event){
         event.preventDefault();

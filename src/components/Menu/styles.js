@@ -6,6 +6,7 @@ const MenuContainer = styled.div`
     left: 0px;
     bottom: 0px;
     position: fixed;
+    z-index: 100;
     background-color: #FFFFFF;
     display: ${props => props.id === "" ? "none" : "flex"};
     justify-content: space-between;
