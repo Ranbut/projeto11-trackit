@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {Container, Formulario} from "./styles";
 import logo from "../../assets/logo.png";
 import { ThreeDots } from  'react-loader-spinner';
@@ -9,10 +9,15 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
 function Login(){
+
     const [clicado, setClicado] = useState(false);
     const [login, setLogin] = useState({email: "", password: ""});
     const {setUsuario} = useContext(UsuarioContext);
     const navigate = useNavigate();
+
+    useEffect(() => { 
+        setUsuario({email: "", id: "", image: "", name: "", password: "", token:""});
+    }, []);
 
     function entrar(event){
         event.preventDefault();
