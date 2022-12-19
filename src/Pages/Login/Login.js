@@ -30,9 +30,9 @@ function Login(){
         <Container>
             <img src={logo} alt="Logo"/>
             <Formulario onSubmit={entrar} clicado={clicado}>
-                <input disabled={clicado} required type="email" placeholder="email" value={login.email} onChange={e => setLogin({...login, email: e.target.value})}/>
-                <input disabled={clicado} required type="password" placeholder="senha" value={login.password} onChange={e => setLogin({...login, password: e.target.value} )}/>
-                <button disabled={clicado} type="submit">
+                <input data-test="email-input" disabled={clicado} required type="email" placeholder="email" value={login.email} onChange={e => setLogin({...login, email: e.target.value})}/>
+                <input data-test="password-input" disabled={clicado} required type="password" placeholder="senha" value={login.password} onChange={e => setLogin({...login, password: e.target.value} )}/>
+                <button data-test="login-btn" disabled={clicado} type="submit">
                     <div>Entrar</div>
                     <ThreeDots 
                         height="13" 
@@ -46,7 +46,7 @@ function Login(){
                     />
                 </button>
             </Formulario>
-            <Link to="/cadastro"><p>Não tem uma conta? Cadastre-se!</p></Link>
+            <Link data-test="signup-link" to="/cadastro"><p>Não tem uma conta? Cadastre-se!</p></Link>
         </Container>
     );
 }

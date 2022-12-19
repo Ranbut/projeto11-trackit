@@ -23,11 +23,11 @@ function Cadastro(){
         <Container>
             <img src={logo} alt="Logo"/>
             <Formulario onSubmit={cadastrar} clicado={clicado}>
-                <input disabled={clicado} required type="email" placeholder="email" value={cadastro.email} onChange={e => setCadastro({...cadastro, email: e.target.value})}/>
-                <input disabled={clicado} required type="password" placeholder="senha" value={cadastro.password} onChange={e => setCadastro({...cadastro, password: e.target.value} )}/>
-                <input disabled={clicado} required type="text" placeholder="nome" value={cadastro.name} onChange={e => setCadastro({...cadastro, name: e.target.value} )}/>
-                <input disabled={clicado} required type="url" placeholder="foto" value={cadastro.image} onChange={e => setCadastro({...cadastro, image: e.target.value} )}/>
-                <button disabled={clicado} type="submit">
+                <input data-test="email-input" disabled={clicado} required type="email" placeholder="email" value={cadastro.email} onChange={e => setCadastro({...cadastro, email: e.target.value})}/>
+                <input data-test="password-input" disabled={clicado} required type="password" placeholder="senha" value={cadastro.password} onChange={e => setCadastro({...cadastro, password: e.target.value} )}/>
+                <input data-test="user-name-input" disabled={clicado} required type="text" placeholder="nome" value={cadastro.name} onChange={e => setCadastro({...cadastro, name: e.target.value} )}/>
+                <input data-test="user-image-input" disabled={clicado} required type="url" placeholder="foto" value={cadastro.image} onChange={e => setCadastro({...cadastro, image: e.target.value} )}/>
+                <button data-test="signup-btn" disabled={clicado} type="submit">
                     <div>Cadastrar</div>
                     <ThreeDots 
                         height="13" 
@@ -41,7 +41,7 @@ function Cadastro(){
                     />
                 </button>
             </Formulario>
-            <Link to="/"><p>Já tem uma conta? Faça login!</p></Link>
+            <Link data-test="login-link" to="/"><p>Já tem uma conta? Faça login!</p></Link>
         </Container>
     );
 

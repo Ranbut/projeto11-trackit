@@ -17,12 +17,12 @@ function Habito({ dias, atualizar, habitos }) {
 
     function objetoHabito(h) {
         return (
-            <HabitoContainer key={h.id}>
-                <h3>
+            <HabitoContainer data-test="habit-container" key={h.id}>
+                <h3 data-test="habit-name">
                     {h.name}
-                    <ion-icon name="trash-outline" onClick={() => apagarHabito(h)}></ion-icon>
+                    <ion-icon data-test="habit-delete-btn" name="trash-outline" onClick={() => apagarHabito(h)}></ion-icon>
                 </h3>
-                {dias.map((d) => <BotaoLetra key={d.id} disabled selecionado={h.days.includes(d.id)}>{d.nome}</BotaoLetra>)}
+                {dias.map((d) => <BotaoLetra data-test="habit-day" key={d.id} disabled selecionado={h.days.includes(d.id)}>{d.nome}</BotaoLetra>)}
             </HabitoContainer>
         );
     }

@@ -12,9 +12,9 @@ function Menu(){
     const {habitosConcluidos} = useContext(HabitosContext);
 
     return(
-        <MenuContainer id={usuario.id}>
-            <Link to="/habitos"><Botao>Hábitos</Botao></Link>
-            <Link to="/hoje">
+        <MenuContainer data-test="menu" id={usuario.id}>
+            <Link data-test="habit-link" to="/habitos"><Botao>Hábitos</Botao></Link>
+            <Link data-test="today" to="/hoje">
                 <AtualBotao>
                     <div>
                         <CircularProgressbar
@@ -32,7 +32,7 @@ function Menu(){
                     </div>
                 </AtualBotao>
             </Link>
-            <Link to="/historico"><Botao>Histórico</Botao></Link>
+            <Link data-test="history-link" to="/historico"><Botao>Histórico</Botao></Link>
         </MenuContainer>
     );
 

@@ -73,15 +73,24 @@ function Hoje() {
                 break;
         }
         return (
-            <h1>{nomeDia}, {dayjs().date()}/{dayjs().month() + 1}</h1>
+            <h1 data-test="today">{nomeDia}, {dayjs().date()}/{dayjs().month() + 1}</h1>
         );
     }
 
     return (
         <HojeContainer habitosConcluidos={habitosConcluidos}>
             {renderizarDia()}
-            <p>{habitosConcluidos.feitos === 0 ? "Nenhum hábito concluído ainda" : `${Math.round((habitosConcluidos.feitos / habitosConcluidos.total) * 100)}% dos hábitos concluídos`}</p>
-            {habitosHoje.map((h) => <HabitoContainer key={h.id} feito={h.done} recorde={h.highestSequence === h.currentSequence}><div><h1>{h.name}</h1><h2>Sequência atual: <span>{h.currentSequence} dias</span></h2><h3>Seu recorde: <span>{h.highestSequence} dias</span></h3></div><button onClick={() => clicar(h)}><ion-icon name="checkmark-outline"></ion-icon></button></HabitoContainer>)}
+            <p data-test="today-counter">{habitosConcluidos.feitos === 0 ? "Nenhum hábito concluído ainda" : `${Math.round((habitosConcluidos.feitos / habitosConcluidos.total) * 100)}% dos hábitos concluídos`}</p>
+            {habitosHoje.map((h) => <HabitoContainer data-test="today-habit-countainer" key={h.id} feito={h.done} recorde={h.highestSequence === h.currentSequence}>
+                <div>
+                    <h1 data-test="today-habit-name">{h.name}</h1>
+                    <h2 data-test="today-habit-sequence">Sequência atual: 
+                        <span>{h.currentSequence} dias</span>
+                    </h2>
+                    <h3 data-test="today-habit-record">Seu recorde: 
+                        <span>{h.highestSequence} dias</span>
+                    </h3>
+                </div><button data-test="today-habit-check-btn" onClick={() => clicar(h)}><ion-icon name="checkmark-outline"></ion-icon></button></HabitoContainer>)}
         </HojeContainer>
     );
 }

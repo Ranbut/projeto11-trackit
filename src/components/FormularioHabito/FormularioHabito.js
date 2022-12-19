@@ -36,12 +36,12 @@ function FormularioHabito({ dias, containerCriar, setContainerCriar, atualizar }
     }
 
     return (
-        <FormularioContainer onSubmit={criar} containerCriar={containerCriar} clicado={clicado}>
-            <input disabled={clicado} required type="text" placeholder="nome do hábito" value={habito.name} onChange={e => setHabito({ ...habito, name: e.target.value })}></input>
-            <div>{dias.map((d) => <BotaoLetra disabled={clicado} key={d.id} type="button" selecionado={habito.days.includes(d.id)} onClick={() => selecionarDia(d)}>{d.nome}</BotaoLetra>)}</div>
+        <FormularioContainer data-test="habit-create-container" onSubmit={criar} containerCriar={containerCriar} clicado={clicado}>
+            <input data-test="habit-name-input" disabled={clicado} required type="text" placeholder="nome do hábito" value={habito.name} onChange={e => setHabito({ ...habito, name: e.target.value })}></input>
+            <div>{dias.map((d) => <BotaoLetra data-test="habit-day" disabled={clicado} key={d.id} type="button" selecionado={habito.days.includes(d.id)} onClick={() => selecionarDia(d)}>{d.nome}</BotaoLetra>)}</div>
             <BotoesContainer>
-                <BotaoCancelar disabled={clicado} type="button" onClick={() => setContainerCriar(!containerCriar)}>Cancelar</BotaoCancelar>
-                <BotaoSalvar disabled={clicado} type="submit" clicado={clicado}>
+                <BotaoCancelar data-test="habit-create-cancel-btn" disabled={clicado} type="button" onClick={() => setContainerCriar(!containerCriar)}>Cancelar</BotaoCancelar>
+                <BotaoSalvar data-test="habit-create-save-btn" disabled={clicado} type="submit" clicado={clicado}>
                     <div>Salvar</div>
                     <ThreeDots
                         height="11"

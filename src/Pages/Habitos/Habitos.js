@@ -30,7 +30,7 @@ function Habitos(){
 
     return(
         <HabitosContainer habitos={habitos} >
-            <span><h1>Meus hábitos</h1><div onClick={() => setContainerCriar(!containerCriar)}>+</div></span>
+            <span><h1>Meus hábitos</h1><div data-test="habit-create-btn" onClick={() => setContainerCriar(!containerCriar)}>+</div></span>
             <Formulario dias={dias} containerCriar={containerCriar} setContainerCriar={setContainerCriar} atualizar={atualizar}/>
             <p>Você não tem nenhum hábito cadastrado ainda. Adicione um hábito para começar a trackear!</p>
             <Habito dias={dias} atualizar={atualizar} habitos={habitos}/>
