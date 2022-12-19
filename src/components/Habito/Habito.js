@@ -1,12 +1,10 @@
 import { useContext } from 'react';
-import { HabitosContext } from '../HabitosContext';
 import { UsuarioContext } from '../UsuarioContext';
 import {BotaoLetra, HabitoContainer} from './styles'
 import axios from 'axios';
 
-export default function Habito({ dias, atualizar }) {
+function Habito({ dias, atualizar, habitos }) {
 
-    const { habitos } = useContext(HabitosContext);
     const { usuario } = useContext(UsuarioContext);
 
     function apagarHabito(h) {
@@ -33,3 +31,5 @@ export default function Habito({ dias, atualizar }) {
 
     );
 }
+
+export default Habito;

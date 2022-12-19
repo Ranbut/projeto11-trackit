@@ -9,9 +9,7 @@ import 'react-circular-progressbar/dist/styles.css';
 function Menu(){
 
     const {usuario} = useContext(UsuarioContext);
-    const {habitos} = useContext(HabitosContext);
-
-    console.log(habitos);
+    const {habitosConcluidos} = useContext(HabitosContext);
 
     return(
         <MenuContainer id={usuario.id}>
@@ -20,7 +18,7 @@ function Menu(){
                 <AtualBotao>
                     <div>
                         <CircularProgressbar
-                            value={10}
+                            value={habitosConcluidos.total === 0 ? "0" : Math.round((habitosConcluidos.feitos/habitosConcluidos.total)*100)}
                             text="Hoje"
                             styles={buildStyles({
                                 textSize: '22px',
@@ -28,15 +26,16 @@ function Menu(){
                                 pathColor: '#FFFFFF',
                                 textColor: '#FFFFFF',
                                 trailColor: '#52B6FF',
-                                backgroundColor: '#52B6FF',
+                                backgroundColor: '#52B6FF'
                             })}
-                            />;
+                            />
                     </div>
                 </AtualBotao>
             </Link>
             <Link to="/historico"><Botao>Histórico</Botao></Link>
         </MenuContainer>
     );
+
 }
 
 export default Menu;

@@ -12,8 +12,10 @@ import Topo from "../Components/Header/Header";
 import Menu from "../Components/Menu/Menu";
 
 function App() {
+
   const [usuario, setUsuario] = useState({ email: "", id: "", image: "", name: "", password: "", token: "" });
-  const [habitos, setHabitos] = useState([]);
+  const [habitosConcluidos, setHabitosConcluidos] = useState({});
+
   return (
     <BrowserRouter>
       <GlobalStyle />
@@ -21,7 +23,7 @@ function App() {
         <Topo />
       </UsuarioContext.Provider>
       <UsuarioContext.Provider value={{ usuario }}>
-        <HabitosContext.Provider value={{ habitos }}>
+        <HabitosContext.Provider value={{ habitosConcluidos }}>
           <Menu />
         </HabitosContext.Provider>
       </UsuarioContext.Provider>
@@ -31,10 +33,16 @@ function App() {
             <Login />
           </UsuarioContext.Provider>
         } />
-        <Route path="/hoje" element={<Hoje />} />
+        <Route path="/hoje" element={
+          <UsuarioContext.Provider value={{ usuario }}>
+            <HabitosContext.Provider value={{ habitosConcluidos, setHabitosConcluidos }}>
+              <Hoje />
+            </HabitosContext.Provider>
+          </UsuarioContext.Provider>
+        } />
         <Route path="/habitos" element={
           <UsuarioContext.Provider value={{ usuario }}>
-            <HabitosContext.Provider value={{ habitos, setHabitos }}>
+            <HabitosContext.Provider value={{ habitosConcluidos, setHabitosConcluidos}}>
               <Habitos />
             </HabitosContext.Provider>
           </UsuarioContext.Provider>

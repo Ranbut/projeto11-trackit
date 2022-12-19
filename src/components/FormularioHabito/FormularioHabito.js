@@ -4,7 +4,7 @@ import axios from 'axios';
 import { UsuarioContext } from '../UsuarioContext';
 import { useContext, useState } from 'react';
 
-export default function Formulario({ dias, containerCriar, setContainerCriar, atualizar }) {
+function FormularioHabito({ dias, containerCriar, setContainerCriar, atualizar }) {
     const { usuario } = useContext(UsuarioContext);
     const [clicado, setClicado] = useState(false);
     const [habito, setHabito] = useState({ name: "", days: [] });
@@ -59,3 +59,5 @@ export default function Formulario({ dias, containerCriar, setContainerCriar, at
     );
 
 }
+
+export default FormularioHabito;
