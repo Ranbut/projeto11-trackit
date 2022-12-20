@@ -4,6 +4,7 @@ import { useContext, useState, useEffect } from 'react';
 import { UsuarioContext } from '../../contexts/UsuarioContext';
 import { HabitosContext } from '../../contexts/HabitosContext';
 import dayjs from 'dayjs';
+import {URL_Habitos, URL_Hoje} from '../../constants/urls';
 
 function Hoje() {
 
@@ -16,7 +17,7 @@ function Hoje() {
     const { usuario } = useContext(UsuarioContext);
 
     useEffect(() => {
-        const requisicao = axios.get("https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/today", { headers: { 'Authorization': `Bearer ${usuario.token}` } });
+        const requisicao = axios.get(`${URL_Hoje}`, { headers: { 'Authorization': `Bearer ${usuario.token}` } });
         requisicao.then((res) => {
             setHabitosHoje(res.data);
             const novoObjeto = { feitos: (res.data.filter(o => o.done === true).length), total: res.data.length }
@@ -28,9 +29,9 @@ function Hoje() {
     function clicar(h) {
         let requisicao;
         if (h.done === false) {
-            requisicao = axios.post(`https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/${h.id}/check`, {}, { headers: { 'Authorization': `Bearer ${usuario.token}` } });
+            requisicao = axios.post(`${URL_Habitos}${h.id}/check`, {}, { headers: { 'Authorization': `Bearer ${usuario.token}` } });
         } else {
-            requisicao = axios.post(`https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/${h.id}/uncheck`, {}, { headers: { 'Authorization': `Bearer ${usuario.token}` } });
+            requisicao = axios.post(`${URL_Habitos}${h.id}/uncheck`, {}, { headers: { 'Authorization': `Bearer ${usuario.token}` } });
         }
         requisicao.then(() => atualizar());
         requisicao.catch((res) => { alert(res.response.data.message); });

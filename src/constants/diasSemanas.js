@@ -8,4 +8,4 @@ const diasSemanas = [
 	'Sábado',
 ];
 
-export default diasSemanas;
+export {diasSemanas};

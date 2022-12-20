@@ -4,6 +4,7 @@ import { useState } from "react";
 import axios from 'axios';
 import { Link, useNavigate } from "react-router-dom";
 import { ThreeDots } from  'react-loader-spinner';
+import {URL_Cadastro} from '../../constants/urls';
 
 function Cadastro(){
 
@@ -14,7 +15,7 @@ function Cadastro(){
     function cadastrar(event){
         event.preventDefault();
         setClicado(true);
-        const requisicao = axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/sign-up", cadastro);
+        const requisicao = axios.post(`${URL_Cadastro}`, cadastro);
         requisicao.then(() => navigate("/")) ;
         requisicao.catch((res) => {alert(res.response.data.message); setClicado(false);}) ;
     }

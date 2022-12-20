@@ -5,6 +5,7 @@ import { UsuarioContext } from '../../contexts/UsuarioContext';
 import { HabitosContext } from '../../contexts/HabitosContext';
 import Formulario from '../../components/FormularioHabito/FormularioHabito';
 import Habito from '../../components/Habito/Habito';
+import {URL_Habitos} from '../../constants/urls'
 
 function Habitos(){
 
@@ -17,13 +18,13 @@ function Habitos(){
     const dias = [{id: 0, nome: "D"}, {id: 1, nome: "S"}, {id: 2, nome: "T"}, {id: 3, nome: "Q"}, {id: 4, nome: "Q"}, {id: 5, nome: "S"}, {id: 6, nome: "S"}];
     
     useEffect(() => { 
-        const requisicao = axios.get("https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits", {headers: {'Authorization': `Bearer ${usuario.token}` }});
+        const requisicao = axios.get(`${URL_Habitos}`, {headers: {'Authorization': `Bearer ${usuario.token}` }});
         requisicao.then((res) => setHabitos(res.data)) ;
         requisicao.catch((res) => {alert(res.response.data.message);});
     }, [setHabitos, usuario.token]);
 
     function atualizar(){
-        const requisicao = axios.get("https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits", {headers: {'Authorization': `Bearer ${usuario.token}` }});
+        const requisicao = axios.get(`${URL_Habitos}`, {headers: {'Authorization': `Bearer ${usuario.token}` }});
         requisicao.then((res) => {setHabitos(res.data); setHabitosConcluidos({...habitosConcluidos, total: (habitosConcluidos.total+1)});}) ;
         requisicao.catch((res) => alert(res.response.data.message));
     }

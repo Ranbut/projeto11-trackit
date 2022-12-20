@@ -7,6 +7,7 @@ import { UsuarioContext } from '../../contexts/UsuarioContext';
 import axios from 'axios';
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import {URL_Login} from '../../constants/urls';
 
 function Login(){
 
@@ -22,7 +23,7 @@ function Login(){
     function entrar(event){
         event.preventDefault();
         setClicado(true);
-        const requisicao = axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/login", login);
+        const requisicao = axios.post(`${URL_Login}`, login);
         requisicao.then((res) => {setUsuario(res.data); navigate("/hoje"); }) ;
         requisicao.catch((res) => {alert(res.response.data.message); setClicado(false);}) ;
     }

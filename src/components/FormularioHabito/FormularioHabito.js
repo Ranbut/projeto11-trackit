@@ -3,6 +3,7 @@ import {FormularioContainer, BotoesContainer, BotaoSalvar, BotaoCancelar, BotaoL
 import axios from 'axios';
 import { UsuarioContext } from '../../contexts/UsuarioContext';
 import { useContext, useState } from 'react';
+import {URL_Habitos} from '../../constants/urls'
 
 function FormularioHabito({ dias, containerCriar, setContainerCriar, atualizar }) {
     const { usuario } = useContext(UsuarioContext);
@@ -15,7 +16,7 @@ function FormularioHabito({ dias, containerCriar, setContainerCriar, atualizar }
             alert("Escolha pelo menos um dia.")
         } else {
             setClicado(true);
-            const requisicao = axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits", habito, { headers: { 'Authorization': `Bearer ${usuario.token}` } });
+            const requisicao = axios.post(`${URL_Habitos}`, habito, { headers: { 'Authorization': `Bearer ${usuario.token}` } });
             requisicao.then(() => { atualizar(); setHabito({ name: "", days: [] }); setClicado(false); setContainerCriar(false); });
             requisicao.catch((res) => { alert(res.response.data.message); setClicado(false); });
         }
