@@ -42,17 +42,15 @@ function FormularioHabito({ dias, containerCriar, setContainerCriar, atualizar }
             <BotoesContainer>
                 <BotaoCancelar data-test="habit-create-cancel-btn" disabled={clicado} type="button" onClick={() => setContainerCriar(!containerCriar)}>Cancelar</BotaoCancelar>
                 <BotaoSalvar data-test="habit-create-save-btn" disabled={clicado} type="submit" clicado={clicado}>
-                    <div>Salvar</div>
-                    <ThreeDots
-                        height="11"
-                        width="43"
+                {clicado ? <ThreeDots
+                        height="11" 
+                        width="43" 
                         radius="9"
-                        color="#ffffff"
+                        color="#ffffff" 
                         ariaLabel="three-dots-loading"
                         wrapperStyle={{}}
                         wrapperClassName=""
-                        visible={clicado}
-                    />
+                        visible={clicado} /> : 'Salvar'}
                 </BotaoSalvar>
             </BotoesContainer>
         </FormularioContainer>

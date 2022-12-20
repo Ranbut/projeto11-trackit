@@ -4,8 +4,18 @@ import { useContext, useState, useEffect } from 'react';
 import { UsuarioContext } from '../../contexts/UsuarioContext';
 import { HabitosContext } from '../../contexts/HabitosContext';
 import dayjs from 'dayjs';
+import updateLocale from 'dayjs/plugin/updateLocale';
+import 'dayjs/locale/pt-br';
+import { diasSemanas } from '../../constants/diasSemanas';
 
 function Hoje() {
+
+	dayjs.extend(updateLocale);
+	dayjs.updateLocale('pt-br', {
+		diasSemanas,
+	});
+
+	let hojeDia = dayjs().locale("pt-br").format('dddd, DD/MM');
 
     const { habitosConcluidos, setHabitosConcluidos } = useContext(HabitosContext);
     const [habitosHoje, setHabitosHoje] = useState([]);
@@ -41,45 +51,9 @@ function Hoje() {
         });
         requisicao.catch((res) => { alert(res.response.data.message); });
     }
-
-    function renderizarDia() {
-
-        let nomeDia = '';
-
-        //Verificar qual é o dia da semana
-        switch (dayjs().day()) {
-            case 0:
-                nomeDia = 'Domingo';
-                break;
-            case 1:
-                nomeDia = 'Segunda';
-                break;
-            case 2:
-                nomeDia = 'Terça';
-                break;
-            case 3:
-                nomeDia = 'Quarta';
-                break;
-            case 4:
-                nomeDia = 'Quinta';
-                break;
-            case 5:
-                nomeDia = 'Sexta';
-                break;
-            case 6:
-                nomeDia = 'Sábado';
-                break;
-            default:
-                break;
-        }
-        return (
-            <h1 data-test="today">{nomeDia}, {dayjs().date()}/{dayjs().month() + 1}</h1>
-        );
-    }
-
     return (
         <HojeContainer habitosConcluidos={habitosConcluidos}>
-            {renderizarDia()}
+            <h1 data-test="today">{hojeDia}</h1>
             <p data-test="today-counter">{habitosConcluidos.feitos === 0 ? "Nenhum hábito concluído ainda" : `${Math.round((habitosConcluidos.feitos / habitosConcluidos.total) * 100)}% dos hábitos concluídos`}</p>
             {habitosHoje.map((h) => <HabitoContainer data-test="today-habit-countainer" key={h.id} feito={h.done} recorde={h.highestSequence === h.currentSequence}>
                 <div>
