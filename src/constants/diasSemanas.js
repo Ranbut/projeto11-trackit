@@ -1,4 +1,4 @@
-export const diasSemanas = [
+const diasSemanas = [
 	'Domingo',
 	'Segunda-feira',
 	'Terça-feira',
@@ -7,3 +7,5 @@ export const diasSemanas = [
 	'Sexta-feira',
 	'Sábado',
 ];
+
+export default diasSemanas;
