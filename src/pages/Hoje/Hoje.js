@@ -73,7 +73,7 @@ function Hoje() {
                 break;
         }
         return (
-            <div data-test="today">{nomeDia}, {dayjs().date()}/{dayjs().month() + 1}</div>
+            <h1 data-test="today">{nomeDia}, {dayjs().date()}/{dayjs().month() + 1}</h1>
         );
     }
 
