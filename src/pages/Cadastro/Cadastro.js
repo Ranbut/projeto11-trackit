@@ -28,8 +28,7 @@ function Cadastro(){
                 <input data-test="user-name-input" disabled={clicado} required type="text" placeholder="nome" value={cadastro.name} onChange={e => setCadastro({...cadastro, name: e.target.value} )}/>
                 <input data-test="user-image-input" disabled={clicado} required type="url" placeholder="foto" value={cadastro.image} onChange={e => setCadastro({...cadastro, image: e.target.value} )}/>
                 <button data-test="signup-btn" disabled={clicado} type="submit">
-                    <div>Cadastrar</div>
-                    <ThreeDots 
+                    {clicado ? <ThreeDots
                         height="13" 
                         width="51" 
                         radius="9"
@@ -37,8 +36,7 @@ function Cadastro(){
                         ariaLabel="three-dots-loading"
                         wrapperStyle={{}}
                         wrapperClassName=""
-                        visible={clicado}
-                    />
+                        visible={clicado} /> : 'Cadastrar'}
                 </button>
             </Formulario>
             <Link data-test="login-link" to="/"><p>Já tem uma conta? Faça login!</p></Link>

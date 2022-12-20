@@ -33,8 +33,7 @@ function Login(){
                 <input data-test="email-input" disabled={clicado} required type="email" placeholder="email" value={login.email} onChange={e => setLogin({...login, email: e.target.value})}/>
                 <input data-test="password-input" disabled={clicado} required type="password" placeholder="senha" value={login.password} onChange={e => setLogin({...login, password: e.target.value} )}/>
                 <button data-test="login-btn" disabled={clicado} type="submit">
-                    <div>Entrar</div>
-                    <ThreeDots 
+                    {clicado ? <ThreeDots
                         height="13" 
                         width="51" 
                         radius="9"
@@ -42,8 +41,7 @@ function Login(){
                         ariaLabel="three-dots-loading"
                         wrapperStyle={{}}
                         wrapperClassName=""
-                        visible={clicado}
-                    />
+                        visible={clicado} /> : 'Entrar'}
                 </button>
             </Formulario>
             <Link data-test="signup-link" to="/cadastro"><p>Não tem uma conta? Cadastre-se!</p></Link>

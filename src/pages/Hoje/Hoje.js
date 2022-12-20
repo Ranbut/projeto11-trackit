@@ -85,10 +85,10 @@ function Hoje() {
                 <div>
                     <h1 data-test="today-habit-name">{h.name}</h1>
                     <h2 data-test="today-habit-sequence">Sequência atual: 
-                        <span>{h.currentSequence} dias</span>
+                        <span> {h.currentSequence} dias</span>
                     </h2>
                     <h3 data-test="today-habit-record">Seu recorde: 
-                        <span>{h.highestSequence} dias</span>
+                        <span> {h.highestSequence} dias</span>
                     </h3>
                 </div><button data-test="today-habit-check-btn" onClick={() => clicar(h)}><ion-icon name="checkmark-outline"></ion-icon></button></HabitoContainer>)}
         </HojeContainer>
