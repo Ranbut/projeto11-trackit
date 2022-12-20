@@ -44,36 +44,36 @@ function Hoje() {
 
     function renderizarDia() {
 
-        let nomeDia = '';
+        let dia = '';
 
         //Verificar qual é o dia da semana
         switch (dayjs().day()) {
             case 0:
-                nomeDia = 'Domingo';
+                dia = 'Domingo';
                 break;
             case 1:
-                nomeDia = 'Segunda-feira';
+                dia = 'Segunda-feira';
                 break;
             case 2:
-                nomeDia = 'Terça-feira';
+                dia = 'Terça-feira';
                 break;
             case 3:
-                nomeDia = 'Quarta-feira';
+                dia = 'Quarta-feira';
                 break;
             case 4:
-                nomeDia = 'Quinta-feira';
+                dia = 'Quinta-feira';
                 break;
             case 5:
-                nomeDia = 'Sexta-feira';
+                dia = 'Sexta-feira';
                 break;
             case 6:
-                nomeDia = 'Sábado';
+                dia = 'Sábado';
                 break;
             default:
                 break;
         }
         return (
-            <h1 data-test="today">{nomeDia}, {dayjs().date()}/{dayjs().month() + 1}</h1>
+            <h1 data-test="today">{dia}, {dayjs().date()}/{dayjs().month() + 1}</h1>
         );
     }
 

@@ -16,7 +16,7 @@ const HojeContainer = styled.div`
         font-family: 'Lexend Deca', sans-serif;
         font-size: 17.976px;
         line-height: 22px;
-        color: ${props => props.habitosConcluidos.feitos === 0 ? "#BABABA" : "#8FC549"};
+        color: ${props => (props.habitosConcluidos.feitos === 0 || isNaN(props.habitosConcluidos.feitos)) ? "#BABABA" : "#8FC549"};
         margin-bottom: 28px;
     }
 `;
