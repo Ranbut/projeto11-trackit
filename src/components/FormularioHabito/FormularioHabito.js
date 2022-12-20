@@ -1,7 +1,7 @@
 import { ThreeDots } from 'react-loader-spinner';
 import {FormularioContainer, BotoesContainer, BotaoSalvar, BotaoCancelar, BotaoLetra} from './styles'
 import axios from 'axios';
-import { UsuarioContext } from '../../Contexts/UsuarioContext';
+import { UsuarioContext } from '../../contexts/UsuarioContext';
 import { useContext, useState } from 'react';
 
 function FormularioHabito({ dias, containerCriar, setContainerCriar, atualizar }) {

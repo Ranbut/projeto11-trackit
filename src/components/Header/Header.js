@@ -1,5 +1,5 @@
 import {HeaderContainer} from "./styles"
-import { UsuarioContext } from '../../Contexts/UsuarioContext';
+import { UsuarioContext } from '../../contexts/UsuarioContext';
 import { useContext } from 'react';
 
 function Header(){

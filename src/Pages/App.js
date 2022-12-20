@@ -6,10 +6,10 @@ import Hoje from "./Hoje/Hoje";
 import Habitos from "./Habitos/Habitos";
 import Historico from "./Historico/Historico";
 import Cadastro from "./Cadastro/Cadastro";
-import { UsuarioContext } from '../Contexts/UsuarioContext';
-import { HabitosContext } from '../Contexts/HabitosContext';
-import Topo from "../Components/Header/Header";
-import Menu from "../Components/Menu/Menu";
+import { UsuarioContext } from '../contexts/UsuarioContext';
+import { HabitosContext } from '../contexts/HabitosContext';
+import Topo from "../components/Header/Header";
+import Menu from "../components/Menu/Menu";
 
 function App() {
 

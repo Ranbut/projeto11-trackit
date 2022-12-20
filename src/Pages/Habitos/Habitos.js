@@ -1,10 +1,10 @@
 import {HabitosContainer} from "./styles"
 import { useContext, useState, useEffect } from 'react';
 import axios from 'axios';
-import { UsuarioContext } from '../../Contexts/UsuarioContext';
-import { HabitosContext } from '../../Contexts/HabitosContext';
-import Formulario from '../../Components/FormularioHabito/FormularioHabito';
-import Habito from '../../Components/Habito/Habito';
+import { UsuarioContext } from '../../contexts/UsuarioContext';
+import { HabitosContext } from '../../contexts/HabitosContext';
+import Formulario from '../../components/FormularioHabito/FormularioHabito';
+import Habito from '../../components/Habito/Habito';
 
 function Habitos(){
 

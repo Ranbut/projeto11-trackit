@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { UsuarioContext } from '../../Contexts/UsuarioContext';
+import { UsuarioContext } from '../../contexts/UsuarioContext';
 import {BotaoLetra, HabitoContainer} from './styles'
 import axios from 'axios';
 

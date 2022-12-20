@@ -1,8 +1,8 @@
 import {HojeContainer, HabitoContainer} from './styles'
 import axios from 'axios';
 import { useContext, useState, useEffect } from 'react';
-import { UsuarioContext } from '../../Contexts/UsuarioContext';
-import { HabitosContext } from '../../Contexts/HabitosContext';
+import { UsuarioContext } from '../../contexts/UsuarioContext';
+import { HabitosContext } from '../../contexts/HabitosContext';
 import dayjs from 'dayjs';
 
 function Hoje() {

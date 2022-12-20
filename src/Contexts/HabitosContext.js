@@ -1,3 +1,5 @@
 import { createContext } from 'react';
 
-export const HabitosContext = createContext({feitos: 0, total: 0});
+const HabitosContext = createContext({feitos: 0, total: 0});
+
+export default {HabitosContext};
