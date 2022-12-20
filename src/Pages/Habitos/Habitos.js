@@ -1,8 +1,8 @@
 import {HabitosContainer} from "./styles"
 import { useContext, useState, useEffect } from 'react';
 import axios from 'axios';
-import { UsuarioContext } from '../../Components/UsuarioContext';
-import { HabitosContext } from '../../Components/HabitosContext';
+import { UsuarioContext } from '../../Contexts/UsuarioContext';
+import { HabitosContext } from '../../Contexts/HabitosContext';
 import Formulario from '../../Components/FormularioHabito/FormularioHabito';
 import Habito from '../../Components/Habito/Habito';
 

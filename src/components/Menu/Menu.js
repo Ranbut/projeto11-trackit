@@ -1,5 +1,5 @@
-import { UsuarioContext } from '../UsuarioContext';
-import { HabitosContext } from '../HabitosContext';
+import { UsuarioContext } from '../../Contexts/UsuarioContext';
+import { HabitosContext } from '../../Contexts/HabitosContext';
 import { useContext } from 'react';
 import {MenuContainer, Botao, AtualBotao} from "./styles";
 import { Link } from "react-router-dom";

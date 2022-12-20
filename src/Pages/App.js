@@ -6,8 +6,8 @@ import Hoje from "./Hoje/Hoje";
 import Habitos from "./Habitos/Habitos";
 import Historico from "./Historico/Historico";
 import Cadastro from "./Cadastro/Cadastro";
-import { UsuarioContext } from '../Components/UsuarioContext';
-import { HabitosContext } from '../Components/HabitosContext';
+import { UsuarioContext } from '../Contexts/UsuarioContext';
+import { HabitosContext } from '../Contexts/HabitosContext';
 import Topo from "../Components/Header/Header";
 import Menu from "../Components/Menu/Menu";
 

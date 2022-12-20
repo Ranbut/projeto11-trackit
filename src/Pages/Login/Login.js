@@ -3,7 +3,7 @@ import {Container, Formulario} from "./styles";
 import logo from "../../assets/logo.png";
 import { ThreeDots } from  'react-loader-spinner';
 import { useContext } from 'react';
-import { UsuarioContext } from '../../Components/UsuarioContext';
+import { UsuarioContext } from '../../Contexts/UsuarioContext';
 import axios from 'axios';
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
