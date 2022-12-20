@@ -7,16 +7,10 @@ import dayjs from 'dayjs';
 
 function Hoje() {
 
-    let dia = new Date();
-    const diasSemanas = [
-        'Domingo',
-        'Segunda-feira',
-        'Terça-feira',
-        'Quarta-feira',
-        'Quinta-feira',
-        'Sexta-feira',
-        'Sábado',
-    ];
+    const semana = (new Date().toLocaleString('pt-br', { weekday: 'long' }))
+    const abrev = semana.split("-")[0]
+    const dia = (dayjs().format("DD/M"))
+
     const { habitosConcluidos, setHabitosConcluidos } = useContext(HabitosContext);
     const [habitosHoje, setHabitosHoje] = useState([]);
     const { usuario } = useContext(UsuarioContext);
@@ -52,7 +46,7 @@ function Hoje() {
     }
     return (
         <HojeContainer habitosConcluidos={habitosConcluidos}>
-            <h1 data-test="today">{diasSemanas[dia.getDay()]}, {dayjs().date()}/{dayjs().month()}</h1>
+            <h1 data-test="today">{`${abrev.charAt(0).toUpperCase() + abrev.slice(1)}, ${dia}`}</h1>
             <p data-test="today-counter">{(habitosConcluidos.feitos === 0 || isNaN(habitosConcluidos.feitos)) ? "Nenhum hábito concluído ainda" : `${Math.round((habitosConcluidos.feitos / habitosConcluidos.total) * 100)}% dos hábitos concluídos`}</p>
             {habitosHoje.map((h) => <HabitoContainer key={h.id} feito={h.done} recorde={h.highestSequence === h.currentSequence} data-test="today-habit-container"><div><h1 data-test="today-habit-name">{h.name}</h1><h2 data-test="today-habit-sequence">Sequência atual: <span>{h.currentSequence} dias</span></h2><h3 data-test="today-habit-record">Seu recorde: <span>{h.highestSequence} dias</span></h3></div><button onClick={() => clicar(h)} data-test="today-habit-check-btn"><ion-icon name="checkmark-outline"></ion-icon></button></HabitoContainer>)}
         </HojeContainer>
