@@ -25,13 +25,12 @@ function Hoje() {
         let requisicao;
         if (h.done === false) {
             requisicao = axios.post(`https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/${h.id}/check`, {}, { headers: { 'Authorization': `Bearer ${usuario.token}` } });
-        }else{
+        } else {
             requisicao = axios.post(`https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/${h.id}/uncheck`, {}, { headers: { 'Authorization': `Bearer ${usuario.token}` } });
         }
         requisicao.then(() => atualizar());
         requisicao.catch((res) => { alert(res.response.data.message); });
     }
-
     function atualizar() {
         const requisicao = axios.get("https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/today", { headers: { 'Authorization': `Bearer ${usuario.token}` } });
         requisicao.then((res) => {
@@ -41,56 +40,42 @@ function Hoje() {
         });
         requisicao.catch((res) => { alert(res.response.data.message); });
     }
-
-    function renderizarDia() {
-
-        let dia = '';
-
-        //Verificar qual é o dia da semana
+    function dia() {
+        let nomeDia = '';
         switch (dayjs().day()) {
             case 0:
-                dia = 'Domingo';
+                nomeDia = 'Domingo';
                 break;
             case 1:
-                dia = 'Segunda-feira';
+                nomeDia = 'Segunda';
                 break;
             case 2:
-                dia = 'Terça-feira';
+                nomeDia = 'Terça';
                 break;
             case 3:
-                dia = 'Quarta-feira';
+                nomeDia = 'Quarta';
                 break;
             case 4:
-                dia = 'Quinta-feira';
+                nomeDia = 'Quinta';
                 break;
             case 5:
-                dia = 'Sexta-feira';
+                nomeDia = 'Sexta';
                 break;
             case 6:
-                dia = 'Sábado';
+                nomeDia = 'Sábado';
                 break;
             default:
                 break;
         }
         return (
-            <h1 data-test="today">{dia}, {dayjs().date()}/{dayjs().month() + 1}</h1>
+            <h1 data-test="today">{nomeDia}, {dayjs().date()}/{dayjs().month() + 1}</h1>
         );
     }
-
     return (
         <HojeContainer habitosConcluidos={habitosConcluidos}>
-            {renderizarDia()}
-            <p data-test="today-counter">{habitosConcluidos.feitos === 0 ? "Nenhum hábito concluído ainda" : `${Math.round((habitosConcluidos.feitos / habitosConcluidos.total) * 100)}% dos hábitos concluídos`}</p>
-            {habitosHoje.map((h) => <HabitoContainer data-test="today-habit-container" key={h.id} feito={h.done} recorde={h.highestSequence === h.currentSequence}>
-                <div>
-                    <h1 data-test="today-habit-name">{h.name}</h1>
-                    <h2 data-test="today-habit-sequence">Sequência atual: 
-                        <span> {h.currentSequence} dias</span>
-                    </h2>
-                    <h3 data-test="today-habit-record">Seu recorde: 
-                        <span> {h.highestSequence} dias</span>
-                    </h3>
-                </div><button data-test="today-habit-check-btn" onClick={() => clicar(h)}><ion-icon name="checkmark-outline"></ion-icon></button></HabitoContainer>)}
+            {dia()}
+            <p data-test="today-counter">{(habitosConcluidos.feitos === 0 || isNaN(habitosConcluidos.feitos)) ? "Nenhum hábito concluído ainda" : `${Math.round((habitosConcluidos.feitos / habitosConcluidos.total) * 100)}% dos hábitos concluídos`}</p>
+            {habitosHoje.map((h) => <HabitoContainer key={h.id} feito={h.done} recorde={h.highestSequence === h.currentSequence} data-test="today-habit-container"><div><h1 data-test="today-habit-name">{h.name}</h1><h2 data-test="today-habit-sequence">Sequência atual: <span>{h.currentSequence} dias</span></h2><h3 data-test="today-habit-record">Seu recorde: <span>{h.highestSequence} dias</span></h3></div><button onClick={() => clicar(h)} data-test="today-habit-check-btn"><ion-icon name="checkmark-outline"></ion-icon></button></HabitoContainer>)}
         </HojeContainer>
     );
 }
