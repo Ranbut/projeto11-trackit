@@ -81,7 +81,7 @@ function Hoje() {
         <HojeContainer habitosConcluidos={habitosConcluidos}>
             {renderizarDia()}
             <p data-test="today-counter">{habitosConcluidos.feitos === 0 ? "Nenhum hábito concluído ainda" : `${Math.round((habitosConcluidos.feitos / habitosConcluidos.total) * 100)}% dos hábitos concluídos`}</p>
-            {habitosHoje.map((h) => <HabitoContainer data-test="today-habit-countainer" key={h.id} feito={h.done} recorde={h.highestSequence === h.currentSequence}>
+            {habitosHoje.map((h) => <HabitoContainer data-test="today-habit-container" key={h.id} feito={h.done} recorde={h.highestSequence === h.currentSequence}>
                 <div>
                     <h1 data-test="today-habit-name">{h.name}</h1>
                     <h2 data-test="today-habit-sequence">Sequência atual: 
