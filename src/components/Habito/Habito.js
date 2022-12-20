@@ -2,6 +2,7 @@ import { useContext } from 'react';
 import { UsuarioContext } from '../../contexts/UsuarioContext';
 import {BotaoLetra, HabitoContainer} from './styles'
 import axios from 'axios';
+import {URL_Habitos} from '../../constants/urls'
 
 function Habito({ dias, atualizar, habitos }) {
 
@@ -9,7 +10,7 @@ function Habito({ dias, atualizar, habitos }) {
 
     function apagarHabito(h) {
         if (window.confirm('Gostaria de apagar este hábito?')) {
-            const requisicao = axios.delete(`https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/${h.id}`, { headers: { 'Authorization': `Bearer ${usuario.token}` } });
+            const requisicao = axios.delete(`${URL_Habitos}${h.id}`, { headers: { 'Authorization': `Bearer ${usuario.token}` } });
             requisicao.then(() => atualizar());
             requisicao.catch((res) => alert(res.response.data.message));
         }
